@@ -1,0 +1,59 @@
+<?php
+
+namespace app\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "redis_list".
+ *
+ * @property int $id
+ * @property int $task_id
+ * @property int $status
+ * @property string $create_time
+ * @property string $update_time
+ */
+class RedisList extends \yii\db\ActiveRecord
+{
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
+    {
+        return 'redis_list';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
+        return [
+            [['task_id', 'status'], 'integer'],
+            [['create_time', 'update_time'], 'string', 'max' => 50],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'task_id' => 'Task ID',
+            'status' => 'Status',
+            'create_time' => 'Create Time',
+            'update_time' => 'Update Time',
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     * @return RedisListQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new RedisListQuery(get_called_class());
+    }
+}
