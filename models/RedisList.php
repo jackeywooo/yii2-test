@@ -15,6 +15,9 @@ use Yii;
  */
 class RedisList extends \yii\db\ActiveRecord
 {
+    const STATUS_CLOSE = 0;
+    const STATUS_OPEN = 1;
+
     /**
      * {@inheritdoc}
      */
@@ -56,4 +59,19 @@ class RedisList extends \yii\db\ActiveRecord
     {
         return new RedisListQuery(get_called_class());
     }
+
+    public function addOne($taskId, $status=0) {
+        if(empty($taskId)) {
+            Yii::error('insert error');
+        }
+        $this->task_id = $taskId;
+        $this->status = $status;
+
+        if($this->save()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

@@ -1,12 +1,12 @@
 <?php
 
 $params = require __DIR__ . '/params.php';
-$db = require __DIR__ . '/db.php';
+$systemConfig = require __DIR__ . '/system.php';
 
 $config = [
     'id' => 'basic-console',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log','queue'],
     'controllerNamespace' => 'app\commands',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -24,7 +24,10 @@ $config = [
                 ],
             ],
         ],
-        'db' => $db,
+        'db' => $systemConfig['db'],
+        'redis' => $systemConfig['redis'],
+        'queue' => $systemConfig['queue'],
+
     ],
     'params' => $params,
     /*

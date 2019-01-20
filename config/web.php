@@ -71,5 +71,4 @@ if (YII_ENV_DEV) {
         'allowedIPs' => ['127.0.0.1', '::1','114.94.55.138'],
     ];
 }
-
 return $config;
