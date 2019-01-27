@@ -1,7 +1,7 @@
 <?php
 
 $params = require __DIR__ . '/params.php';
-$db = require __DIR__ . '/db.php';
+$system = require __DIR__ . '/system.php';
 
 $config = [
     'id' => 'basic',
@@ -42,7 +42,7 @@ $config = [
                 ],
             ],
         ],
-        'db' => $db,
+        'db' => $system['db'],
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -71,4 +71,5 @@ if (YII_ENV_DEV) {
         'allowedIPs' => ['127.0.0.1', '::1','114.94.55.138'],
     ];
 }
+
 return $config;
